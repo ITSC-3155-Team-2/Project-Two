@@ -1,6 +1,5 @@
 'use strict';
 
-const arrayFilterer1 = MakeMultiFilter([1, 2, 3]);
 
 function MakeMultiFilter(originalArray) {
     var currentArray = originalArray;
@@ -9,25 +8,27 @@ function MakeMultiFilter(originalArray) {
         arrayFilterer(filterCritera(currentArray[i]), callback(currentArray));
     }
 
-    function arrayFilterer(filterCritera, callback) {
-        if (filterCriteria) {
-            currentArray.splice(i, 1);
+function arrayFilterer(filterCriteria, callback) {
+        if (typeof filterCriteria === 'function') {
+            for (var i = 0; i < currentArray.length; i++) {
+                if (!filterCriteria(currentArray[i])) {
+                    currentArray.splice(i, 1);
+                    i--; 
+                }
+            }
+
+        } else {
+            return currentArray;
         }
 
-        return this;
-    }
-}
+        if (typeof callback === 'function') {
+            callback.call(originalArray, currentArray);
+        }
 
-function filterCritera(element) {
-    if (element >= 1) {
-        return true;
-    } else {
-        return false;
+        return arrayFilterer;
     }
-}
 
-function callback(currentArray) {
-    this.currentArray;
+    return arrayFilterer;
 }
 
 
