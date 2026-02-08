@@ -1,4 +1,4 @@
-'make strict';
+'use strict';
 
 const arrayFilterer1 = MakeMultiFilter([1, 2, 3]);
 
@@ -29,4 +29,5 @@ function filterCritera(element) {
 function callback(currentArray) {
     this.currentArray;
 }
+
 
