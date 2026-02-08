@@ -5,7 +5,7 @@ function TemplateProcessor(template) {
 }
 
 TemplateProcessor.prototype.fillIn = function (dictionary) {
-  return this.template.replace(/{{\s*(\w]+)\s*}}/g, function (match, property) {
+  return this.template.replace(/{{\s*([\w]+)\s*}}/g, function (match, property) {
     if (Object.hasOwn(dictionary, property) {
       return dictionary[property];
     }
