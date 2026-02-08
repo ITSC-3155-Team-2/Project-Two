@@ -1,34 +1,30 @@
 'use strict';
 
-
 function MakeMultiFilter(originalArray) {
-    var currentArray = originalArray;
+  var currentArray = originalArray.slice(); 
 
-    for (var i = 0; i < currentArray.length; i++) {
-        arrayFilterer(filterCritera(currentArray[i]), callback(currentArray));
+  function arrayFilterer(filterCriteria, callback) {
+    if (typeof filterCriteria !== 'function') {
+      return currentArray;
     }
 
-function arrayFilterer(filterCriteria, callback) {
-        if (typeof filterCriteria === 'function') {
-            for (var i = 0; i < currentArray.length; i++) {
-                if (!filterCriteria(currentArray[i])) {
-                    currentArray.splice(i, 1);
-                    i--; 
-                }
-            }
+    var newArray = []; 
+    for (var i = 0; i < currentArray.length; i++) {
+      if (filterCriteria(currentArray[i])) {
+        newArray.push(currentArray[i]);
+      }
+    }
+    currentArray = newArray;
 
-        } else {
-            return currentArray;
-        }
-
-        if (typeof callback === 'function') {
-            callback.call(originalArray, currentArray);
-        }
-
-        return arrayFilterer;
+    if (typeof callback === 'function') {
+      callback.call(originalArray, currentArray);
     }
 
     return arrayFilterer;
+  }
+
+  return arrayFilterer;
 }
+
 
 
