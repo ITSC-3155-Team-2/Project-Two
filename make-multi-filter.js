@@ -1,22 +1,21 @@
 'make strict';
 
-var originalArray = [1, 2, 3];
+const arrayFilterer1 = MakeMultiFilter([1, 2, 3]);
 
 function MakeMultiFilter(originalArray) {
     var currentArray = originalArray;
 
     for (var i = 0; i < currentArray.length; i++) {
-        arrayFilterer(filterCritera, callback);
+        arrayFilterer(filterCritera(currentArray[i]), callback(currentArray));
     }
 
     function arrayFilterer(filterCritera, callback) {
         if (filterCriteria) {
-            currentArray.splice()
-        } else {
-
+            currentArray.splice(i, 1);
         }
+
+        return this;
     }
-    return arrayFilterer();
 }
 
 function filterCritera(element) {
@@ -27,8 +26,7 @@ function filterCritera(element) {
     }
 }
 
-/*
-function callback() {
-
+function callback(currentArray) {
+    this.currentArray;
 }
-*/
+
