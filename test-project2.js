@@ -1,13 +1,11 @@
+/*global TemplateProcessor, MakeMultiFilter*/
 'use strict';
-/*global TemplateProcessor*/
 
 /*
  * This file tests the Project #2 JavaScript assignment problems. It prints what
  * it finds to the console log and updates the text being displayed in the window with a
  * summary of the results.
  */
-
-/* eslint-env browser, node */
 
 (function () {
   // Result message for Problems 1-3
@@ -91,6 +89,7 @@
         console.error('filter function callback does not filter 3 correctly', result);
         p1Message = 'FAILURE';
       }
+      // eslint-disable-next-line no-useless-assignment
       result = filterFuncTwo(function (item) {
         return item !== 1;
       }, function (callbackResult) {
