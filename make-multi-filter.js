@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict';
 
 function MakeMultiFilter(originalArray) {
@@ -25,6 +26,7 @@ function MakeMultiFilter(originalArray) {
 
   return arrayFilterer;
 }
+
 
 
 
